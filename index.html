@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UJC DF</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- SCRIPT DO UMAMI (Troque o website-id pelo seu ID do Umami) -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="SEU-WEBSITE-ID-AQUI"></script>
+
+  <style>
+    :root {
+      --bg-color: #990E19;
+      --card-bg: #1e293b;
+      --card-hover: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: ##faf5f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .profile-header {
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-color: var(--card-bg);
+      border: 3px solid var(--accent);
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--accent);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    p.bio {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .link-card {
+      display: block;
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .link-card:hover, .link-card:active {
+      background-color: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 36px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="profile-header">
+      <div class="avatar">UJC</div>
+      <h1>UJC DF</h1>
+      <p class="bio">União da Juventude Comunista do PCB</p>
+    </div>
+
+    <!-- Lista de Links -->
+    <div class="links-container">
+      <a href="https://ujc.org.br/" 
+         class="link-card" 
+         onclick="trackClick('ujc_site')">
+        ☭ Site oficial da UJC
+      </a>
+
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyKwoX4f66x-ktlnnSnLb-2u_l_oSsGgTctBYld_wl-otDPQ/viewform" 
+         class="link-card" 
+         onclick="trackClick('formulario_recrutamento')">
+        📝 Formulário de Recrutamento
+      </a>
+
+      <a href="https://pcb.org.br/portal2/34239" 
+         class="link-card" 
+         onclick="trackClick('jornal')">
+        📰 Jornal O Poder Popular
+      </a>
+    </div>
+
+    <footer>
+      <p>© 2026 • Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <!-- JS: Telemetria de Eventos para o Umami -->
+  <script>
+    function trackClick(nomeBotao) {
+      // Verifica se a biblioteca do Umami já foi carregada na página
+      if (window.umami) {
+        // Dispara o evento customizado com propriedades extras
+        umami.track('clique_link', { 
+          botao: nomeBotao,
+          timestamp: new Date().toISOString()
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
